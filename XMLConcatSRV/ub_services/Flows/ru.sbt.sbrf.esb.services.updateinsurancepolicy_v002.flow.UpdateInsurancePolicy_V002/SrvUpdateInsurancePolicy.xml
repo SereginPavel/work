@@ -1,0 +1,110 @@
+<Service name="SrvUpdateInsurancePolicy" label="UpdInsPol">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>002</Version>
+		<GBOOperNameRq>UpdateInsurancePolicyRq</GBOOperNameRq>
+		<GBOOperNameRs>UpdateInsurancePolicyRs</GBOOperNameRs>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="ASBS" key="ASBS">
+			<TransformType>ASBS_SC</TransformType>
+			<SystemName>ASBS</SystemName>
+			<ReplyToQ>UB.ASBS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>AppBS</AS1OperNameRq>
+			<AS1OperNameRs>Response</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+			<DecodeData>
+				<MaritalStatus name="1" key="Married"/>
+				<MaritalStatus name="2" key="Single"/>
+				<MaritalStatus name="3" key="Divorced"/>
+				<MaritalStatus name="4" key="Separation"/>
+				<MaritalStatus name="5" key="Widow"/>
+				<MaritalStatus name="6" key="Civil"/>
+				<Gender name="Мужской" key="Male"/>
+				<Gender name="Женский" key="Female"/>
+				<AddressType name="Reg" key="Primary"/>
+				<AddressType name="Live" key="Secondary"/>
+				<DocTypeDescription name="1" key="Паспорт гражданина РФ"/>
+				<DocTypeDescription name="30" key="Паспорт иностранного гражданина"/>
+			</DecodeData>
+		</Consumer>
+		<Consumer name="UFS" key="UFS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>UFS</SystemName>
+			<ReplyToQ>UB.UFS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>UpdateInsurancePolicyRq</AS1OperNameRq>
+			<AS1OperNameRs>UpdateInsurancePolicyRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="ASBS" key="ASBS">
+			<TargetQ>UB.ASBS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.UPDINSPOL.V002.ASBS.RESPONSE</ReplyToQ>
+			<!--<ReplyToQM></ReplyToQM>-->
+			<TransformType>ASBS_SP</TransformType>
+			<SystemName>ASBS</SystemName>
+			<AS2OperNameRq>AppEFS</AS2OperNameRq>
+			<AS2OperNameRs>Response</AS2OperNameRs>
+			<DecodeData>
+				<MaritalStatus name="1" key="MARRIED"/>
+				<MaritalStatus name="2" key="SINGLE"/>
+				<MaritalStatus name="3" key="DIVORCED"/>
+				<MaritalStatus name="4" key="SEPARATION"/>
+				<MaritalStatus name="5" key="WIDOW"/>
+				<MaritalStatus name="6" key="CIVIL"/>
+				<Gender name="Мужской" key="MALE"/>
+				<Gender name="Женский" key="FEMALE"/>
+				<AddressType name="Reg" key="PRIMARY"/>
+				<AddressType name="Live" key="SECONDARY"/>
+			</DecodeData>
+		</Provider>
+		<Provider name="SOL" key="SOL">
+			<TargetQ>UB.SOL.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.SOL.RESPONSE</ReplyToQ>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>SOL</SystemName>
+			<AS2OperNameRq>UpdateInsurancePolicyRq</AS2OperNameRq>
+			<AS2OperNameRs>UpdateInsurancePolicyRs</AS2OperNameRs>
+		</Provider>
+		<Provider name="NONL" key="NONL">
+			<TargetQ>UB.NONL.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.NONL.RESPONSE</ReplyToQ>
+			<ReplyToQM/>
+			<TransformType>DZO_SBS_NONL_SP</TransformType>
+			<SystemName>NONL</SystemName>
+			<AS2OperNameRq>Payment</AS2OperNameRq>
+			<AS2OperNameRs>Response</AS2OperNameRs>
+		</Provider>
+	</Providers>
+</Service>

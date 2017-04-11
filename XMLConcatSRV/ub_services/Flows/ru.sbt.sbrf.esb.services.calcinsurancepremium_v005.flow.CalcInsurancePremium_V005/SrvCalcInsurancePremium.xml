@@ -1,0 +1,56 @@
+<Service name="SrvCalcInsurancePremium" label="CalcInsPrem">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>005</Version>
+		<GBOOperNameRq>CalcInsurancePremiumRq</GBOOperNameRq>
+		<GBOOperNameRs>CalcInsurancePremiumRs</GBOOperNameRs>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="UFS" key="UFS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>UFS</SystemName>
+			<ReplyToQ>UB.UFS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>CalcInsurancePremiumRq</AS1OperNameRq>
+			<AS1OperNameRs>CalcInsurancePremiumRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="ASBS" key="ASBS">
+			<TargetQ>UB.ASBS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.CALCINSPREM.V005.ASBS.RESPONSE</ReplyToQ>
+			<!--<ReplyToQM></ReplyToQM>-->
+			<TransformType>ASBS_SP</TransformType>
+			<SystemName>ASBS</SystemName>
+			<AS2OperNameRq>AppEFS</AS2OperNameRq>
+			<AS2OperNameRs>Response</AS2OperNameRs>
+			<DecodeData>
+				<MaritalStatus name="1" key="MARRIED"/>
+				<MaritalStatus name="2" key="SINGLE"/>
+				<MaritalStatus name="3" key="DIVORCED"/>
+				<MaritalStatus name="4" key="SEPARATION"/>
+				<MaritalStatus name="5" key="WIDOW"/>
+				<MaritalStatus name="6" key="CIVIL"/>
+				<Gender name="Мужской" key="MALE"/>
+				<Gender name="Женский" key="FEMALE"/>
+				<AddressType name="Reg" key="PRIMARY"/>
+				<AddressType name="Live" key="SECONDARY"/>
+			</DecodeData>
+		</Provider>
+	</Providers>
+</Service>

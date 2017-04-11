@@ -1,0 +1,26 @@
+<Service name="GetWealthManagementAgreemtList" label="GETWELMANAGG">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>001</Version>
+		<GBOOperNameRq>GetWealthManagementAgreemtListRq</GBOOperNameRq>
+		<GBOOperNameRs>GetWealthManagementAgreemtListRs</GBOOperNameRs>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="PPRB.BS" key="PPRB.BS">
+		</Consumer>
+		<Consumer name="SOL" key="SOL">
+		</Consumer>
+		<Consumer name="UFS" key="UFS">
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="PPRB.BS" key="PPRB.BS">
+		</Provider>
+		<Provider name="SOL" key="SOL">
+		</Provider>
+	</Providers>
+</Service>

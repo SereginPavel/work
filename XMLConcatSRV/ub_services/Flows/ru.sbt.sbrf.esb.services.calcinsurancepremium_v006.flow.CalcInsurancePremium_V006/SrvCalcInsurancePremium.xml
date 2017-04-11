@@ -1,0 +1,69 @@
+<Service name="SrvCalcInsurancePremium" label="CalcInsPrem">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>006</Version>
+		<GBOOperNameRq>CalcInsurancePremiumRq</GBOOperNameRq>
+		<GBOOperNameRs>CalcInsurancePremiumRs</GBOOperNameRs>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="UFS" key="UFS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>UFS</SystemName>
+			<ReplyToQ>UB.UFS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>CalcInsurancePremiumRq</AS1OperNameRq>
+			<AS1OperNameRs>CalcInsurancePremiumRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+			</ProviderReferences>
+		</Consumer>
+		<Consumer name="PPRB.BS" key="PPRB.BS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>PPRB.BS</SystemName>
+			<ReplyToQ>UB.PPRB.SRVCALCINSURANCEPREMIUM.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>CalcInsurancePremiumRq</AS1OperNameRq>
+			<AS1OperNameRs>CalcInsurancePremiumRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="SOL" key="SOL">
+			<TargetQ>UB.SOL.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.SOL.RESPONSE</ReplyToQ>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>SOL</SystemName>
+			<AS2OperNameRq>CalcInsurancePremiumRq</AS2OperNameRq>
+			<AS2OperNameRs>CalcInsurancePremiumRs</AS2OperNameRs>
+		</Provider>
+		<Provider name="PPRB.BS" key="PPRB.BS">
+			<TargetQ>UB.PPRB.BS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>PPRB.BS</SystemName>
+			<AS2OperNameRq>CreateInsurancePolicyRq</AS2OperNameRq>
+			<AS2OperNameRs>CreateInsurancePolicyRs</AS2OperNameRs>
+		</Provider>
+	</Providers>
+</Service>

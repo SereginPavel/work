@@ -1,0 +1,43 @@
+<Service name="SrvGetInsurancePolicyDetail" label="GetInsPolDet">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>003</Version>
+		<GBOOperNameRq>GetInsurancePolicyDetailRq</GBOOperNameRq>
+		<GBOOperNameRs>GetInsurancePolicyDetailRs</GBOOperNameRs>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="UFS" key="UFS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>UFS</SystemName>
+			<ReplyToQ>UB.UFS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>GetInsurancePolicyDetailRq</AS1OperNameRq>
+			<AS1OperNameRs>GetInsurancePolicyDetailRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+			</ProviderReferences>
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="ASBS" key="ASBS">
+			<TargetQ>UB.ASBS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.GETINSPOLDET.V003.ASBS.RESPONSE</ReplyToQ>
+			<!--<ReplyToQM></ReplyToQM>-->
+			<TransformType>ASBS_SP</TransformType>
+			<SystemName>ASBS</SystemName>
+			<AS2OperNameRq>GetInsurancePolicyDetailRq</AS2OperNameRq>
+			<AS2OperNameRs>GetInsurancePolicyDetailRs</AS2OperNameRs>
+		</Provider>
+	</Providers>
+</Service>

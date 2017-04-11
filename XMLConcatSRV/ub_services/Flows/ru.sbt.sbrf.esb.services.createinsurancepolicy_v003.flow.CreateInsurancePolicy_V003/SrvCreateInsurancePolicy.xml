@@ -1,0 +1,114 @@
+<Service name="SrvCreateInsurancePolicy" label="CrtInsPol">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>003</Version>
+		<GBOOperNameRq>CreateInsurancePolicyRq</GBOOperNameRq>
+		<GBOOperNameRs>CreateInsurancePolicyRs</GBOOperNameRs>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="PPRB.BS" key="PPRB.BS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>PPRB.BS</SystemName>
+			<ReplyToQ>UB.PPRB.SRVCREATEINSURANCEPOLICY.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>CreateInsurancePolicyRq</AS1OperNameRq>
+			<AS1OperNameRs>CreateInsurancePolicyRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+		<Consumer name="SOL" key="SOL">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>SOL</SystemName>
+			<ReplyToQ>UB.SOL.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>CreateInsurancePolicyRq</AS1OperNameRq>
+			<AS1OperNameRs>CreateInsurancePolicyRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+		<Consumer name="UFS" key="UFS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>UFS</SystemName>
+			<ReplyToQ>UB.UFS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<AS1OperNameRq>CreateInsurancePolicyRq</AS1OperNameRq>
+			<AS1OperNameRs>CreateInsurancePolicyRs</AS1OperNameRs>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="ASBS" key="ASBS"/>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="ASBS" key="ASBS">
+			<TargetQ>UB.ASBS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.CRTINSPOL.V003.ASBS.RESPONSE</ReplyToQ>
+			<!--<ReplyToQM></ReplyToQM>-->
+			<TransformType>ASBS_SP</TransformType>
+			<SystemName>ASBS</SystemName>
+			<AS2OperNameRq>AppEFS</AS2OperNameRq>
+			<AS2OperNameRs>Response</AS2OperNameRs>
+			<DecodeData>
+				<MaritalStatus name="1" key="MARRIED"/>
+				<MaritalStatus name="2" key="SINGLE"/>
+				<MaritalStatus name="3" key="DIVORCED"/>
+				<MaritalStatus name="4" key="SEPARATION"/>
+				<MaritalStatus name="5" key="WIDOW"/>
+				<MaritalStatus name="6" key="CIVIL"/>
+				<Gender name="Мужской" key="MALE"/>
+				<Gender name="Женский" key="FEMALE"/>
+				<AddressType name="Reg" key="PRIMARY"/>
+				<AddressType name="Live" key="SECONDARY"/>
+			</DecodeData>
+		</Provider>
+		<Provider name="PPRB.BS" key="PPRB.BS">
+			<TargetQ>UB.PPRB.BS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>PPRB.BS</SystemName>
+			<AS2OperNameRq>CreateInsurancePolicyRq</AS2OperNameRq>
+			<AS2OperNameRs>CreateInsurancePolicyRs</AS2OperNameRs>
+		</Provider>
+		<Provider name="SOL" key="SOL">
+			<TargetQ>UB.SOL.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.SOL.RESPONSE</ReplyToQ>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>SOL</SystemName>
+			<AS2OperNameRq>CreateInsurancePolicyRq</AS2OperNameRq>
+			<AS2OperNameRs>CreateInsurancePolicyRs</AS2OperNameRs>
+		</Provider>
+	</Providers>
+</Service>

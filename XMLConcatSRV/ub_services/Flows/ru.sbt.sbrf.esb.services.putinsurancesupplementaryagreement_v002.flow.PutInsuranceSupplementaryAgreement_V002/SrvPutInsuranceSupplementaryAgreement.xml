@@ -1,0 +1,77 @@
+<Service name="SrvPutInsuranceSupplementaryAgreement" label="PutInsSupAgr">
+	<ServiceParams>
+		<Expiry>-1</Expiry>
+		<Persistence>0</Persistence>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLogging>1</TransactionLogging>
+		<SLAMonitor>0</SLAMonitor>
+		<Version>002</Version>
+	</ServiceParams>
+	<Consumers>
+		<Consumer name="PPRB.BS" key="PPRB.BS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>PPRB.BS</SystemName>
+			<ReplyToQ>UB.PPRB.SRVPUTINSURSUPPLAGREEMENT.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+		<Consumer name="SOL" key="SOL">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>SOL</SystemName>
+			<ReplyToQ>UB.SOL.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+		<Consumer name="UFS" key="UFS">
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>UFS</SystemName>
+			<ReplyToQ>UB.UFS.OUT</ReplyToQ>
+			<ReplyToQM/>
+			<SLAParams>
+				<MaxTPS>0</MaxTPS>
+				<MaxSize>0</MaxSize>
+				<AvgTPD>0</AvgTPD>
+				<AvgSize>0</AvgSize>
+			</SLAParams>
+			<ProviderReferences>
+				<ProviderReference name="PPRB.BS" key="PPRB.BS"/>
+				<ProviderReference name="SOL" key="SOL"/>
+			</ProviderReferences>
+		</Consumer>
+	</Consumers>
+	<Providers>
+		<Provider name="PPRB.BS" key="PPRB.BS">
+			<TargetQ>UB.PPRB.BS.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>PPRB.BS</SystemName>
+		</Provider>
+		<Provider name="SOL" key="SOL">
+			<TargetQ>UB.SOL.REQUEST</TargetQ>
+			<TargetQM/>
+			<ReplyToQ>UB.SOL.RESPONSE</ReplyToQ>
+			<ReplyToQM/>
+			<TransformType>Transform_no_changes</TransformType>
+			<SystemName>SOL</SystemName>
+		</Provider>
+	</Providers>
+</Service>
