@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2015 sp2 (http://www.altova.com) by Anand (Home) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+	<xs:include schemaLocation="../Types/PIR25_UB_v01.xsd"/>
+	<xs:element name="UpdateInsurancePolicyRs" type="UpdateInsurancePolicyRs_Type">
+		<xs:annotation>
+			<xs:documentation>Ответ на запрос "Изменение страхового полиса"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="UpdateInsurancePolicyRs_Type">
+		<xs:annotation>
+			<xs:documentation>Тип ответа на запрос "Изменение страхового полиса"</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BasicRS_Type">
+				<xs:sequence>
+					<xs:element name="InsurancePolicyDetails" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Данные о страховом полисе</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:restriction base="InsurancePolicyDetails_Type">
+									<xs:sequence>
+										<xs:element name="Mode" type="String_255" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Режим работы сервиса</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="SubMode" type="String_255" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Подрежим работы сервиса</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="StatusUpdateInfo" minOccurs="0" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Обновление статуса объекта</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:restriction base="StatusUpdateInfo_Type">
+														<xs:sequence>
+															<xs:element name="ChangeReason" type="ChangeReason_Type" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Причина назначения статуса</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="Status" type="StatusType_Type" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Статус</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="Comments" type="Comments_Type" minOccurs="0" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation>Комментарии</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+													</xs:restriction>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ApplicationStatusID" type="Identifier" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Идентификатор статуса Заявления/Договора в ППРБ.БС</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ApplicationStatusCode" type="String_50" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Код статуса Заявления/Договора в ППРБ.БС</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ApplicationStatus" type="String_255" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Статус заявления/Договора в ППРБ.БС</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="InsuranceInfo" minOccurs="0">
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:restriction base="InsuranceInfo_Type">
+														<xs:sequence>
+															<xs:element name="PolicyData" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>Блок данных по страхованию</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:restriction base="PolicyData_Type">
+																			<xs:sequence>
+																				<xs:element name="RequestNumber" type="Insur_RequestNumber_Type" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>Номер заявки в СК</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="PolicySeries" type="PolicySeries_Type" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>Серия полиса</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="PolicyNumber" type="PolicyNumber_Type" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>Номер полиса</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="PolicyID" type="Long" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>ID полиса в ППРБ.БС</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:restriction>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+															<xs:element name="InsurancePeriod" minOccurs="0" maxOccurs="unbounded">
+																<xs:annotation>
+																	<xs:documentation>Период действия</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:complexContent>
+																		<xs:restriction base="InsurancePeriod_Type">
+																			<xs:sequence>
+																				<xs:element name="StartDate" type="Insur_StartDate_Type" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>Дата начала действия</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="EndDate" type="Insur_EndDate_Type" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>Дата окончания действия</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																				<xs:element name="DateModified" type="Boolean" minOccurs="0">
+																					<xs:annotation>
+																						<xs:documentation>Признак изменения StartDate or EndDate</xs:documentation>
+																					</xs:annotation>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:restriction>
+																	</xs:complexContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:restriction>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:restriction>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="LinkedSupplimentary" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Идентификаторы связанных допсоглашений</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:restriction base="LinkedSupplAgreements_Type">
+									<xs:sequence>
+										<xs:element name="SupplimentaryRequestID" type="Identifier" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Идентификатор заявления на ДС</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="OperationType" type="String_255" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Признак административных или технических изменений</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="AgreementStartDate" type="StartDate_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Дата начала действия доп. соглашения</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:restriction>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PostSaleRequest" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Запрос</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:restriction base="PostSaleRequest_Type">
+									<xs:sequence>
+										<xs:element name="PossibleToCreate" type="Boolean" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Возможность создания доп. соглашения (заявления)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ActionStatus" type="Boolean" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Статус результата действий</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:restriction>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ReportMessage" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Статус ответа</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:restriction base="Status_Type">
+									<xs:sequence>
+										<xs:element name="StatusCode" type="StatusCode_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Статусный код возврата</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ServerStatusCode" type="ServerStatusCode_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Статусный код сервера. Это значение выдается пользователю на экран и позволяет провайдеру лучше диагностировать ошибку</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Severity" type="Severity_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Серьезность ошибки. Значения: Error, Warn, Info</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="StatusDesc" type="StatusDesc_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Описание статуса</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:restriction>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="AdditionalStatus" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Дополнительные статусы. Этот агрегат может содержать дополнительные статусы, которые может сообщить сервер. Например, и номер счета, и дата неправильны, то StatusCode может содержать одну из этих ошибок, а этот агрегат – другую</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:restriction base="AdditionalStatus_Type">
+									<xs:sequence>
+										<xs:element name="StatusCode" type="StatusCode_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Статусный код возврата</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ServerStatusCode" type="ServerStatusCode_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Статусный код сервера</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Severity" type="Severity_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Серьезность ошибки</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="StatusDesc" type="StatusDesc_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Описание статуса</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="System" type="String_255" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Система-источник ошибки</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:restriction>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

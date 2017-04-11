@@ -1,0 +1,60 @@
+<Adapter name="A_ASBS">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>ASBS</SCName>
+		<Operations>
+		<Response key="app">
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</Response>
+		<Response key="upd">
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</Response>
+		<Response key="get">
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</Response>
+		<GetInsurancePolicyDetailRs>
+			<Service>SrvGetInsurancePolicyDetail</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsurancePolicyDetailRs>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvCreateInsurancePolicy001">
+			<TargetQ>UB.CRTINSPOL.V001.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy001">
+			<TargetQ>UB.UPDINSPOL.V001.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium001">
+			<TargetQ>UB.CALCINSPREM.V001.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsurancePolicyDetail001">
+			<TargetQ>UB.GETINSPOLDET.V001.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy002">
+			<TargetQ>UB.CRTINSPOL.V002.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy002">
+			<TargetQ>UB.UPDINSPOL.V002.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium002">
+			<TargetQ>UB.CALCINSPREM.V002.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsurancePolicyDetail002">
+			<TargetQ>UB.GETINSPOLDET.V002.ASBS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

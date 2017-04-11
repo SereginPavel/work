@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Pavel (SBRF) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="..\Types\PIR24_KSB_Types.xsd"/>
+	<xs:element name="GetInsurancePolicyDetailRq" type="GetInsurancePolicyDetailRq_Type">
+		<xs:annotation>
+			<xs:documentation>Запрос на просмотр детальной информации по страховому/НПФ продукту клиента</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="GetInsurancePolicyDetailRq_Type">
+		<xs:annotation>
+			<xs:documentation>Тип сообщения-запроса для просмотра детальной информации по страховому/НПФ продукту клиента</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RqUID">
+				<xs:annotation>
+					<xs:documentation>Идентификатор запроса</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="RqUID_Type">
+						<xs:pattern value="([0-9]|[a-f]|[A-F]){32}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RqTm" type="DateTime">
+				<xs:annotation>
+					<xs:documentation>Дата и время передачи сообщения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperUID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Уникальный идентификатор операции.
+Строковый тип с поддержкой русского языка в кодировке UTF-8.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SPName" type="SPName_Type">
+				<xs:annotation>
+					<xs:documentation>Идентификатор системы провайдера</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SCName" type="SPName_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор системы потребителя</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BankInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Информация о банке </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="BankInfo_Type">
+							<xs:sequence>
+								<xs:element name="BranchId" type="BranchId_Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Идентификатор филиала банка</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RegionId" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Код тербанка</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="C">
+											<xs:maxLength value="10"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="AgencyId" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>Код отделения</xs:documentation>
+									</xs:annotation>
+									<xs:simpleType>
+										<xs:restriction base="C">
+											<xs:maxLength value="10"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+								<xs:element name="RbTbBrchId" type="RbTbBrchId_Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>8-значный код ТБ, в котором открыт счет МБК, по которой клиент произвел идентификацию на УС</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="RbBrchId" type="RbBrchId_Type" minOccurs="0">
+									<xs:annotation>
+										<xs:documentation>6-значный код ТБ, в котором ведется продукт клиента (кредит, вклад, ОМС, карты)</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InsuranceApp" type="InsuranceApp_Type">
+				<xs:annotation>
+					<xs:documentation>Информация о страховом продукте</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

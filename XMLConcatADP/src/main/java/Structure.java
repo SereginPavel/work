@@ -5,6 +5,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by SerP on 20.11.2016.
@@ -12,7 +14,6 @@ import java.security.NoSuchAlgorithmException;
 public class Structure {
 
     //region параметры вывода и xml структуры
-    private final Double INCRVER = 0.01;
     private XMLInputFactory xmlInFactory;
     private File dir;
     private File currentFile;
@@ -26,7 +27,7 @@ public class Structure {
 
     public Structure() throws Throwable{
         this.xmlInFactory = XMLInputFactory.newFactory();
-        this.dir = new File("ub_services");
+        this.dir = new File("ub_adapters");
         this.currentFile = new File(new File("").getAbsolutePath());
         this.xmlOutFactory = XMLOutputFactory.newFactory();
         this.xmlEventFactory = XMLEventFactory.newFactory();
@@ -42,8 +43,8 @@ public class Structure {
         if (!checkFileCache) return;
 
         //версия темпового файла с кешом
-        tempFileCache = currentFile + "//tmpCacheService.xml";
-        new File("tmpCacheService.xml");
+        tempFileCache = currentFile + "//tmpCacheAdapter.xml";
+        new File("tmpCacheAdapter.xml");
 
         this.outputWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFileCache), "UTF-8"));
         this.xmlEventWriter = xmlOutFactory.createXMLEventWriter(outputWriter);
@@ -86,16 +87,16 @@ public class Structure {
      */
     private void checkFile(File[] file) throws XMLStreamException {
         for (int i = 0; i < file.length; i++) {
-            //список наименований схем типов, которые используются в XSD cхемах в данном потоке
-            //HashSet<String> hashSet = new HashSet<String>();
-            xmlEventWriter.add(xmlEventFactory.createStartElement("", null, "Flow"));
-            xmlEventWriter.add(xmlEventFactory.createAttribute("name", file[i].getName()));
+                //список наименований схем типов, которые используются в XSD cхемах в данном потоке
+                //HashSet<String> hashSet = new HashSet<String>();
+                xmlEventWriter.add(xmlEventFactory.createStartElement("", null, "Flow"));
+                xmlEventWriter.add(xmlEventFactory.createAttribute("name", file[i].getName()));
 
-            System.out.println("Flow " + file[i].getName() + ":");
-            addAdapter(file[i].listFiles());
+                System.out.println("Flow " + file[i].getName() + ":");
+                addAdapter(file[i].listFiles());
 
-            //listType.add(hashSet);
-            xmlEventWriter.add(xmlEventFactory.createEndElement("", null, "Flow"));
+                //listType.add(hashSet);
+                xmlEventWriter.add(xmlEventFactory.createEndElement("", null, "Flow"));
         }
     }
 
@@ -133,12 +134,12 @@ public class Structure {
         String nameFileCache;
         File[] baseDir = currentFile.listFiles();
         for (File baseFile: baseDir) {
-            if (baseFile.isFile() && baseFile.getName().startsWith("CacheService")){
+            if (baseFile.isFile() && baseFile.getName().startsWith("CacheAdapter")){
                 baseFileCache = baseFile;
                 nameFileCache = baseFile.getName();
                 System.out.println(nameFileCache);
-//                String[] partNameCacheValidate = nameFileCache.split("_v")[1].split(".xml");
-//                versionBase = Double.parseDouble(partNameCacheValidate[0]);
+           //     String[] partNameCacheValidate = nameFileCache.split("v")[1].split(".xml");
+           //     versionBase = Double.parseDouble(partNameCacheValidate[0]);
                 return true;
             }
         }

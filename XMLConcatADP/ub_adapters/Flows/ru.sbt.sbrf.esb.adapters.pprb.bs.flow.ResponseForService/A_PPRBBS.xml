@@ -1,0 +1,187 @@
+<Adapter name="A_PPRBBS">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<Operations>
+		<GetInsurancePolicyDetailRs>
+			<Service>SrvGetInsurancePolicyDetail</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsurancePolicyDetailRs>
+		<CreateInsurancePolicyRs>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CreateInsurancePolicyRs>
+		<UpdateInsurancePolicyRs>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</UpdateInsurancePolicyRs>
+		<GetInsurancePolicyDetailRs>
+			<Service>SrvGetInsurancePolicyDetail</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</GetInsurancePolicyDetailRs>
+		<CreateInsurancePolicyRs>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</CreateInsurancePolicyRs>
+		<CreateInsurancePolicyRs>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CreateInsurancePolicyRs>
+		<UpdateInsurancePolicyRs>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</UpdateInsurancePolicyRs>
+		<SelectInsuranceProductRs>
+			<Service>SrvSelectInsuranceProduct</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</SelectInsuranceProductRs>
+		<SelectInsuranceProductRs>
+			<Service>SrvSelectInsuranceProduct</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</SelectInsuranceProductRs>
+		<CheckCumulativeInsuranceRiskLimitsRs>
+			<Service>SrvCheckCumulativeInsuranceRiskLimits</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CheckCumulativeInsuranceRiskLimitsRs>
+		<PutInsuranceApplicationRs>
+			<Service>SrvPutInsuranceApplication</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceApplicationRs>
+		<GetInsuranceApplicationDetailsRs>
+			<Service>SrvGetInsuranceApplicationDetails</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceApplicationDetailsRs>
+		<GenerateInsuranceDocumentRs>
+			<Service>SrvGenerateInsuranceDocument</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GenerateInsuranceDocumentRs>
+		<GenerateInsuranceDocumentRs>
+			<Service>SrvGenerateInsuranceDocument</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</GenerateInsuranceDocumentRs>
+		<PutInsuranceSupplementaryAgreementRs>
+			<Service>SrvPutInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceSupplementaryAgreementRs>
+		<GetInsuranceSupplementaryAgreementRs>
+			<Service>SrvGetInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceSupplementaryAgreementRs>
+		<AnnulInsurancePolicyRs>
+			<Service>SrvAnnulInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</AnnulInsurancePolicyRs>
+		<CalcInsuranceRefundAmountRs>
+			<Service>SrvCalcInsuranceRefundAmount</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CalcInsuranceRefundAmountRs>
+		<PutInsuranceFNOLRs>
+			<Service>SrvPutInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceFNOLRs>
+		<GetInsuranceFNOLRs>
+			<Service>SrvGetInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceFNOLRs>
+		<CalcInsurancePremiumRs>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CalcInsurancePremiumRs>
+		<CalcInsurancePremiumRs>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>004</ServiceVersion>
+		</CalcInsurancePremiumRs>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvGetInsurancePolicyDetail001">
+			<TargetQ>UB.GETINSPOLDET.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy001">
+			<TargetQ>UB.CRTINSPOL.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy001">
+			<TargetQ>UB.UPDINSPOL.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy003">
+			<TargetQ>UB.UPDINSPOL.V003.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsurancePolicyDetail002">
+			<TargetQ>UB.GETINSPOLDET.V002.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy002">
+			<TargetQ>UB.CRTINSPOL.V002.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy003">
+			<TargetQ>UB.CRTINSPOL.V003.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvSelectInsuranceProduct001">
+			<TargetQ>UB.SELINSPROD.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvSelectInsuranceProduct002">
+			<TargetQ>UB.SELINSPROD.V002.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCheckCumulativeInsuranceRiskLimits001">
+			<TargetQ>UB.CHECKCUMINSRSKLIM.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceApplication001">
+			<TargetQ>UB.PUTINSAPP.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceApplicationDetails001">
+			<TargetQ>UB.GETINSAPPDET.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGenerateInsuranceDocument001">
+			<TargetQ>UB.GENINSDOC.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGenerateInsuranceDocument002">
+			<TargetQ>UB.GENINSDOC.V002.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.PUTINSSUPAGR.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.GETINSSUPAGR.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvAnnulInsurancePolicy001">
+			<TargetQ>UB.ANNINSPOL.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsuranceRefundAmount001">
+			<TargetQ>UB.CALCINSREFAMT.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceFNOL001">
+			<TargetQ>UB.PUTINSFNOL.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceFNOL001">
+			<TargetQ>UB.GETINSFNOL.V001.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium003">
+			<TargetQ>UB.CALCINSPREM.V003.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium004">
+			<TargetQ>UB.CALCINSPREM.V004.PPRB.BS.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

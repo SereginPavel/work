@@ -1,0 +1,36 @@
+<Adapter name="A_ASBS">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>ASBS</SCName>
+		<Operations>
+		<AppBS key="app">
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</AppBS>
+		<AppBS key="upd">
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</AppBS>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvCreateInsurancePolicy001">
+			<TargetQ>UB.CRTINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy002">
+			<TargetQ>UB.CRTINSPOL.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy001">
+			<TargetQ>UB.UPDINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy002">
+			<TargetQ>UB.UPDINSPOL.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

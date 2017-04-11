@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Pavel (SBRF) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+	<xs:include schemaLocation="../Types/PIR23_KSB_new.xsd"/>
+	<xs:element name="UpdateInsurancePolicyRs" type="Response_Type">
+		<xs:annotation>
+			<xs:documentation>Ответ на запрос "Изменение страхового полиса"</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Response_Type">
+		<xs:annotation>
+			<xs:documentation>Тип ответа на запрос "Изменение страхового полиса"</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BasicRS_Type">
+				<xs:sequence>
+					<xs:element name="RequestID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>ID заявки в ETSM. Не заполняется, если OpCode="get"</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="36"/>
+								<xs:pattern value="[0-9a-fA-F\-]*"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="SID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>ID источника сообщения</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="10"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="ApplicationStatus" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Статус заявки. Не заполняется, если OpCode="get".             Код статуса:
+Договор создан: 1.
+Договор оплачен: 2.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="5"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="InsurancePremium" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Страховая премия</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="InsuranceAmount" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Страховая сумма</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CreditAmount" type="xs:double" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Сумма кредита</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CreditCurrency" type="Currency_Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Валюта кредита</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DateTime" type="DateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата/время последнего действия. Не заполняется, если OpCode="get"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ReturnCode" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>Код возврата (0 - успешно, другое - ошибка)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Description" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Описание кода возврата</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="512"/>
+								<xs:pattern value="[0-9А-Яа-яЁёA-Za-z\\?=.*()/\-_\s:,!«»“”]*"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="InsuranceFromDate" type="Date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата начала страхования. Заполняется, если OpCode="acc"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="InsuranceToDate" type="Date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата окончания страхования. Заполняется, если OpCode="acc"</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="RiskList" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Перечень страховых рисков и премий</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:restriction base="InsuranceRiskList_Type">
+									<xs:sequence>
+										<xs:element name="RiskID" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>ID риска</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="String">
+													<xs:maxLength value="32"/>
+													<xs:pattern value="[0-9a-fA-F]*"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RiskItem" type="RiskItem_Type">
+											<xs:annotation>
+												<xs:documentation>Наименование риска</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RiskInsAdditional" type="xs:boolean" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Признак дополнительного страхового риска (только для опциональных рисков ВЗР)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RiskPremium" type="xs:double" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Страховая премия по риску в валюте</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RiskPremiumRu" type="xs:double" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Страховая премия по риску в рублях</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RiskPremiumCurrencyID" type="String" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>ID валюты страховой премии</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="RiskPremiumCurrency" type="Currency_Type" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Валюта страховой премии</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:restriction>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ContractID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>ID страхового договора</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="32"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="PolicyNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Номер полиса</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="10"/>
+								<xs:pattern value="[0-9]*"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="PolicySeries" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Серия полиса</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="10"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

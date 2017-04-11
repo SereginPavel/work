@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Pavel (SBRF) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" vc:minVersion="1.1">
+	<xs:simpleType name="Account_Type">
+		<xs:annotation>
+			<xs:documentation>Тип счета</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="20"/>
+			<xs:pattern value="[\d]{20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AddressType_Type">
+		<xs:annotation>
+			<xs:documentation>Тип адреса</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C"/>
+	</xs:simpleType>
+	<xs:simpleType name="C">
+		<xs:annotation>
+			<xs:documentation>Строковый тип с поддержкой русского языка в кодировке UTF-8.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="CalculationMode_Type">
+		<xs:annotation>
+			<xs:documentation>Тип расчета СП</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="CreditType_Type">
+		<xs:annotation>
+			<xs:documentation>Тип кредита</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="Currency_Type">
+		<xs:annotation>
+			<xs:documentation>Тип валюты</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:length value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>Дата</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date">
+			<xs:pattern value="((20)|(19)|(18))\d\d-((0[1-9]|1[012])-(0[1-9]|[12]\d)|(0[13-9]|1[012])-30|(0[13578]|1[02])-31)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateTime">
+		<xs:annotation>
+			<xs:documentation>Дата и время</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="29"/>
+			<xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}(T[0-9]{2}:[0-9]{2}(:[0-9]{2}(\.[0-9]{3})?((-|\+)[0-9]{2}:[0-9]{2})?)?)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeclineReasonSource_Type">
+		<xs:annotation>
+			<xs:documentation>Источник отклонения заявки</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="DocIssuerCode_Type">
+		<xs:annotation>
+			<xs:documentation>Код подразделения</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="7"/>
+			<xs:pattern value="\d\d\d-\d\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocNumber_Type">
+		<xs:annotation>
+			<xs:documentation>Номер паспорта</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocSeries_Type">
+		<xs:annotation>
+			<xs:documentation>Серия паспорта</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocType_Type">
+		<xs:annotation>
+			<xs:documentation>Тип документа, удостоверяющего личность (1 - Паспорт гражданина РФ, 30 - Паспорт иностранного гражданина)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Gender_Type">
+		<xs:annotation>
+			<xs:documentation>Половая принадлежность</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C"/>
+	</xs:simpleType>
+	<xs:simpleType name="Identifier">
+		<xs:annotation>
+			<xs:documentation>Идентификатор</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MaritalStatus_Type">
+		<xs:annotation>
+			<xs:documentation>Семейное положение </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Mode_Type">
+		<xs:annotation>
+			<xs:documentation>Тип режима обоаботки заявления (general - Общий, accept - Акцепт)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="Name_Type">
+		<xs:annotation>
+			<xs:documentation>Наименование клиента</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NC">
+		<xs:annotation>
+			<xs:documentation>Строковый тип в кодировке ISO Latin-1</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="OpCode_Type">
+		<xs:annotation>
+			<xs:documentation>Тип кода операции</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="OperUID_Type">
+		<xs:annotation>
+			<xs:documentation>Уникальный идентификатор операции</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="UUID"/>
+	</xs:simpleType>
+	<xs:simpleType name="Phone_Type">
+		<xs:annotation>
+			<xs:documentation>Тип номера телефона</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneCode_Type">
+		<xs:annotation>
+			<xs:documentation>Тип кода телефона</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneExt_Type">
+		<xs:annotation>
+			<xs:documentation>Тип добавочного номера телефона</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhonePrefix_Type">
+		<xs:annotation>
+			<xs:documentation>Тип префикса</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:pattern value="[0-9]*"/>
+		</xs:restriction>
+		<!--gfgf-->
+	</xs:simpleType>
+	<xs:simpleType name="PhoneType_Type">
+		<xs:annotation>
+			<xs:documentation>Тип контактного телефона</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C"/>
+	</xs:simpleType>
+	<xs:simpleType name="PostalCode_Type">
+		<xs:annotation>
+			<xs:documentation>Тип "Почтовый индекс"</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SPName_Type">
+		<xs:annotation>
+			<xs:documentation>Service Provider Name</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Identifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="SalesChannel_Type">
+		<xs:annotation>
+			<xs:documentation>Тип Канала продаж</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="String">
+		<xs:annotation>
+			<xs:documentation>Строка</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="RqUID_Type">
+		<xs:annotation>
+			<xs:documentation>Идентификатор запроса</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="UUID"/>
+	</xs:simpleType>
+	<xs:simpleType name="RsUID_Type">
+		<xs:annotation>
+			<xs:documentation>Идентификатор ответа</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="UUID"/>
+	</xs:simpleType>
+	<xs:simpleType name="UUID">
+		<xs:restriction base="String">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InsuranceTerritory_Type">
+		<xs:annotation>
+			<xs:documentation>Территория действия полиса</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Citizenship_type">
+		<xs:annotation>
+			<xs:documentation>Гражданство (0 – Иностранный гражданин, 1 – РФ)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="60"/>
+			<xs:pattern value="[А-Яа-яЁё ]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InsuredAdditional_Type">
+		<xs:annotation>
+			<xs:documentation>Возрастная группа застрахованного (только для Страхования близких).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Realty_Type">
+		<xs:annotation>
+			<xs:documentation>Тип недвижимости/постройки (только для страхования ипотеки)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="InsuredGroup_Type">
+		<xs:annotation>
+			<xs:documentation>Возрастная группа застрахованных</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String"/>
+	</xs:simpleType>
+	<xs:simpleType name="RiskItem_Type">
+		<xs:annotation>
+			<xs:documentation>Наименование риска</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PhoneFull_Type">
+		<xs:annotation>
+			<xs:documentation>Код оператора связи и номер телефона</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC">
+			<xs:pattern value="\+7\(([0-9]{3})\)([0-9]{3})\-([0-9]{2})\-([0-9]{2})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_Reference_Type">
+		<xs:annotation>
+			<xs:documentation>ID (референс) страховки, по которой запрашиваются данные</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RbBrchId_Type">
+		<xs:annotation>
+			<xs:documentation>Тип данных для 6-значного кода территориального банка. Используется для передачи кода ТБ, в котором обслуживается продукт клиента</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:length value="6"/>
+			<xs:pattern value="[0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RbTbBrchId_Type">
+		<xs:annotation>
+			<xs:documentation>Тип данных для 8-значного кода территориального банка. Используется для передачи кода ТБ, в котором открыт счет МБК, по которой клиент произвел идентификацию на УС</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:length value="8"/>
+			<xs:pattern value="[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Amt_Type">
+		<xs:annotation>
+			<xs:documentation>Сумма</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClosedEnum">
+		<xs:annotation>
+			<xs:documentation>Закрытое перечисление. Перечисление содержит	конечный набор допустимых значений. Другие значения не допустимы. Обнаружении значения,	не входящего	в набор допустимых значений,	трактуется как ошибка в любом узле				системы на любом этапе обработки
+				сообщения.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC">
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CurCode_Type">
+		<xs:annotation>
+			<xs:documentation>Код валюты. ISO-4217.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="NC">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Decimal">
+		<xs:annotation>
+			<xs:documentation>Десятичный тип.	</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:pattern value="(\+|\-)?[0-9]*\.?[0-9]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Long">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:simpleType name="ServerStatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>Статусный код сервера</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Severity_Type">
+		<xs:annotation>
+			<xs:documentation>Серьезность ошибки. Значения: Error, Warn, Info </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="ClosedEnum">
+			<xs:enumeration value="Error"/>
+			<xs:enumeration value="Warn"/>
+			<xs:enumeration value="Info"/>
+			<xs:enumeration value=""/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StatusCode_Type">
+		<xs:annotation>
+			<xs:documentation>Код ответа. Если все хорошо, то значение равно 0</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Long"/>
+	</xs:simpleType>
+	<xs:simpleType name="StatusDesc_Type">
+		<xs:annotation>
+			<xs:documentation>Описание статуса. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="String">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_Program_Type">
+		<xs:annotation>
+			<xs:documentation>Страховая программа для отображения</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_Company_Type">
+		<xs:annotation>
+			<xs:documentation>Страховая компания для отображения</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_StartDate_Type">
+		<xs:annotation>
+			<xs:documentation>Дата начала действия страховки</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Date"/>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_EndDate_Type">
+		<xs:annotation>
+			<xs:documentation>Дата окончания действия страховки</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Date"/>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_Status_Type">
+		<xs:annotation>
+			<xs:documentation>Статус страховки для отображения. Для страховых продуктов (Действует, Срок действия истекает, Срок действия истек, Аннулирован). Для НПФ продуктов (Договор заключен, Действующий клиент НПФ Сбербанка, Договор расторгнут).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_ProductType_Type">
+		<xs:annotation>
+			<xs:documentation>Наименование типа продукта, в рамках которого оформлена страховка</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_BP_Type">
+		<xs:annotation>
+			<xs:documentation>Наименование бизнес-процесса, в рамках которого оформлена страховка</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_PolicySeries_Type">
+		<xs:annotation>
+			<xs:documentation>Описание реквизитов договора страхования: Серия</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_PolicyNum_Type">
+		<xs:annotation>
+			<xs:documentation>Описание реквизитов договора страхования: Номер</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_PolicyIssueDt_Type">
+		<xs:annotation>
+			<xs:documentation>Описание реквизитов договора страхования: Дата выдачи полиса</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Date"/>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_Risks_Type">
+		<xs:annotation>
+			<xs:documentation>Описание страховых рисков</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="512"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Insur_AdditionalInfo_Type">
+		<xs:annotation>
+			<xs:documentation>Дополнительная информация (№ и дата кредитного договора (при условии оформления страховки в рамках кредитной сделки)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SNILS_Type">
+		<xs:annotation>
+			<xs:documentation>Номер СНИЛС для пенсионного страхования</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="C">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

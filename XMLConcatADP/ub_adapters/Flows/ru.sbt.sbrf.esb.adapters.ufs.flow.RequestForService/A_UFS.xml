@@ -1,0 +1,212 @@
+<Adapter name="A_UFS">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>UFS</SCName>
+		<Operations>
+		<CreateInsurancePolicyRq>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CreateInsurancePolicyRq>
+		<UpdateInsurancePolicyRq>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</UpdateInsurancePolicyRq>
+		<CalcInsurancePremiumRq>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CalcInsurancePremiumRq>
+		<GetInsurancePolicyDetailRq>
+			<Service>SrvGetInsurancePolicyDetail</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsurancePolicyDetailRq>
+		<CreateInsurancePolicyRq>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</CreateInsurancePolicyRq>
+		<CreateInsurancePolicy>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CreateInsurancePolicy>
+		<UpdateInsurancePolicyRq>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</UpdateInsurancePolicyRq>
+		<UpdateInsurancePolicyRq>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</UpdateInsurancePolicyRq>
+		<CalcInsurancePremiumRq>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</CalcInsurancePremiumRq>
+		<GetInsurancePolicyDetailRq>
+			<Service>SrvGetInsurancePolicyDetail</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</GetInsurancePolicyDetailRq>
+		<SelectInsuranceProductRq>
+			<Service>SrvSelectInsuranceProduct</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</SelectInsuranceProductRq>
+		<SelectInsuranceProductRq>
+			<Service>SrvSelectInsuranceProduct</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</SelectInsuranceProductRq>
+		<CheckCumulativeInsuranceRiskLimitsRq>
+			<Service>SrvCheckCumulativeInsuranceRiskLimits</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CheckCumulativeInsuranceRiskLimitsRq>
+		<PutInsuranceApplicationRq>
+			<Service>SrvPutInsuranceApplication</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceApplicationRq>
+		<GetInsuranceApplicationDetailsRq>
+			<Service>SrvGetInsuranceApplicationDetails</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceApplicationDetailsRq>
+		<GenerateInsuranceDocumentRq>
+			<Service>SrvGenerateInsuranceDocument</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GenerateInsuranceDocumentRq>
+		<GenerateInsuranceDocumentRq>
+			<Service>SrvGenerateInsuranceDocument</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</GenerateInsuranceDocumentRq>
+		<PutInsuranceSupplementaryAgreementRq>
+			<Service>SrvPutInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceSupplementaryAgreementRq>
+		<GetInsuranceSupplementaryAgreementRq>
+			<Service>SrvGetInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceSupplementaryAgreementRq>
+		<AnnulInsurancePolicyRq>
+			<Service>SrvAnnulInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</AnnulInsurancePolicyRq>
+		<CalcInsuranceRefundAmountRq>
+			<Service>SrvCalcInsuranceRefundAmount</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CalcInsuranceRefundAmountRq>
+		<PutInsuranceFNOLRq>
+			<Service>SrvPutInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceFNOLRq>
+		<GetInsuranceFNOLRq>
+			<Service>SrvGetInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceFNOLRq>
+		<CalcInsurancePremiumRq>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CalcInsurancePremiumRq>
+		<CalcInsurancePremiumRq>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>004</ServiceVersion>
+		</CalcInsurancePremiumRq>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvCalcInsurancePremium001">
+			<TargetQ>UB.CALCINSPREM.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsurancePolicyDetail001">
+			<TargetQ>UB.GETINSPOLDET.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy001">
+			<TargetQ>UB.CRTINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy001">
+			<TargetQ>UB.UPDINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium002">
+			<TargetQ>UB.CALCINSPREM.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsurancePolicyDetail002">
+			<TargetQ>UB.GETINSPOLDET.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy002">
+			<TargetQ>UB.CRTINSPOL.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy003">
+			<TargetQ>UB.CRTINSPOL.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy002">
+			<TargetQ>UB.UPDINSPOL.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy003">
+			<TargetQ>UB.UPDINSPOL.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvSelectInsuranceProduct001">
+			<TargetQ>UB.SELINSPROD.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvSelectInsuranceProduct002">
+			<TargetQ>UB.SELINSPROD.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCheckCumulativeInsuranceRiskLimits001">
+			<TargetQ>UB.CHECKCUMINSRSKLIM.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceApplication001">
+			<TargetQ>UB.PUTINSAPP.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceApplicationDetails001">
+			<TargetQ>UB.GETINSAPPDET.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGenerateInsuranceDocument001">
+			<TargetQ>UB.GENINSDOC.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGenerateInsuranceDocument002">
+			<TargetQ>UB.GENINSDOC.V002.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.PUTINSSUPAGR.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.GETINSSUPAGR.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvAnnulInsurancePolicy001">
+			<TargetQ>UB.ANNINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsuranceRefundAmount001">
+			<TargetQ>UB.CALCINSREFAMT.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceFNOL001">
+			<TargetQ>UB.PUTINSFNOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceFNOL001">
+			<TargetQ>UB.GETINSFNOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium003">
+			<TargetQ>UB.CALCINSPREM.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium004">
+			<TargetQ>UB.CALCINSPREM.V004.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

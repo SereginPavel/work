@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 sp1 (http://www.altova.com) by ﻿AMD (Ru-Board) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="../Types/PIR23_ASBS_SimpleTypes.xsd"/>
+	<xs:element name="AppBS" type="Application_Type">
+		<xs:annotation>
+			<xs:documentation>Запрос на создание/изменение данных заявления (OpCode="app/upd")</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="FullAddress_Type">
+		<xs:annotation>
+			<xs:documentation>Тип для заполнения адреса</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ZipCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Почтовый код</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="PostalCode_Type">
+						<xs:pattern value="[0-9]*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Region" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Регион</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="District" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Район</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="City" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Город</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Settlm" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Населенный пункт</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Street" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Улица</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="House" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дом</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Box" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Корпус</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Building" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Строение</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Apart" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Квартира</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Addr1" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес в произвольной текстовой форме</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="AddressType" type="AddressType_Type" use="optional" default="Reg">
+			<xs:annotation>
+				<xs:documentation>Тип адреса (Req - регистрации, Live - проживания). Если не указан, по-умолчанию Reg</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="BankInfo_Type">
+		<xs:annotation>
+			<xs:documentation>Тип отделения банка</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RegionID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код тербанка</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="AgencyID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код отделения </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BranchID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код филиала</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="OperLogin" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Логин КИ в системе</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="Identifier">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SAPID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>SAP ID КИ</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="Identifier">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="OperFIO" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ФИО КИ</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomerInfo_Type">
+		<xs:annotation>
+			<xs:documentation>Данные по клиенту</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="LastName" type="Name_Type">
+				<xs:annotation>
+					<xs:documentation>Фамилия клиента</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="FirstName" type="Name_Type">
+				<xs:annotation>
+					<xs:documentation>Имя клиента</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MiddleName" type="Name_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Отчество клиента</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CitizenshipID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID Гражданства</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Citizenship" type="Citizenship_type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Гражданство</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DocType" type="DocType_Type">
+				<xs:annotation>
+					<xs:documentation>Тип документа, удостоверяющего личность (1 - Паспорт гражданина РФ, 30 - Паспорт иностранного гражданина)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DocTypeDescription" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Полное наименование типа документа, удостоверяющего личность</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="100"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DocSeries" type="DocSeries_Type">
+				<xs:annotation>
+					<xs:documentation>Серия документа, удостоверяющего личность</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DocNumber" type="DocNumber_Type">
+				<xs:annotation>
+					<xs:documentation>Номер документа, удостоверяющего личность</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DocIssuedBy" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Наименование органа, выдавшего документ удостоверяющий личность</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DocIssueDate" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата выдачи документа удостоверяющего личность</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DocIssuerCode" type="DocIssuerCode_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код подразделения органа выдавшего документ удостоверяющий личность</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MaritalStatus" type="MaritalStatus_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Семейное положение. Варианты:
+1 – Женат/Замужем;
+2 – Не женат/не замужем;
+3 – Разведен/разведена;
+4 -  Раздельное проживание;
+5 – Вдова/Вдовец;
+6 – Совместное проживание (гражданский брак).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="FullAddress_Type" maxOccurs="2">
+				<xs:annotation>
+					<xs:documentation>Адрес регистрации и проживания</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BirthDate" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата рождения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Gender" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Пол</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="Gender_Type">
+						<xs:maxLength value="7"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="BirthPlace" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Место рождения</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="C">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactInfo" type="ContactInfo_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Телефоны и адрес электронной почты клиента</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PhoneNum_Type">
+		<xs:annotation>
+			<xs:documentation>Телефонный номер</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PhonePrefix" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код страны</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="PhonePrefix_Type">
+						<xs:maxLength value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PhoneCode" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код региона / оператора связи</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="PhoneCode_Type">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Phone" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Номер телефона</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="Phone_Type">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PhoneExt" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Номер добавочного телефона</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="PhoneExt_Type">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PhoneFull" type="PhoneFull_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Код оператора связи и номер телефона</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="PhoneType" type="PhoneType_Type" use="optional" default="Mobile">
+			<xs:annotation>
+				<xs:documentation>Тип телефона. Если не задан, то считается Mobile</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ContactInfo_Type">
+		<xs:annotation>
+			<xs:documentation>Контактная информация</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Phone" type="PhoneNum_Type" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Номера телефонов КИ</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Email" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Контактный адрес электронной почты</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="NC">
+						<xs:maxLength value="128"/>
+						<xs:pattern value="([-\w.]+@([A-z0-9][-A-z0-9]+.)+[A-z]{2,6})*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InsuranceParameter_Type">
+		<xs:annotation>
+			<xs:documentation>Данные по кредитной и страховой программам</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="InsProductID" type="UUID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID продукта из ППРБ </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BusinessProcess" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Номер бизнес-процесса</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="10"/>
+						<xs:pattern value="[0-9]*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="InsProductIDIC" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID Страхового продукта АС СК</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="10"/>
+						<xs:pattern value="[0-9]*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="InsuranceProgram" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Программа страхования</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="10"/>
+						<xs:pattern value="[0-9]*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CreditOffer" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Кредитная оферта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SalesChannel">
+				<xs:annotation>
+					<xs:documentation>Канал продаж (ВСП, DSA)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="SalesChannel_Type">
+						<xs:maxLength value="4"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SalesChannelID" type="Identifier">
+				<xs:annotation>
+					<xs:documentation>ID канала продаж</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ManagerName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ФИО ответственного сотрудника</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="255"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ManagerSAPID" type="Identifier" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID ответственного сотрудника</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IsEmployee" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Признак "Клиент является сотрудником"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreditType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип кредита </xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="CreditType_Type">
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CreditTerm" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Срок кредитования в месяцах</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreditAmount" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сумма кредита</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreditCurrency" type="Currency_Type" default="RUB" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Валюта кредита (RUB, USD, EUR). По-умолчанию RUB</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MonthlyPayment" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Сумма ежемесячного платежа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AccountNo" type="Account_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Номер ссудного счета</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CreditAgreementNo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Номер кредитного договора</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="100"/>
+						<xs:pattern value="[0-9А-Яа-яЁёA-Za-z\\?=.*()/-_]*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CreditAgreementIssueDate" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата заключения кредитного договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IncludeInsuranceFlag" type="xs:boolean" default="false" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Признак "Включить страховку в кредит"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CalculationMode" default="backward" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип расчета СП</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="CalculationMode_Type">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RiskList" type="RiskList_Type" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Перечень страховых рисков, сумм и премий</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuranceTerritoryID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID Территория действия полиса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuranceTerritory" type="InsuranceTerritory_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Территория действия полиса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuranceApplicationDay" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата оформления заявки клиентом для заключения договора</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuranceContractDay" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата заключения страхового договора(соответствует дате оплаты полиса)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TripFromDate" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата начала путешествия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TripToDate" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дата окончания путешествия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PolicyOneYear" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Полис на 1 год:
+0 – нет
+1 – да 
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DayOfInsurance" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дней страхования</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredPersonInfo" type="InsuredPersonInfo_Type" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Информация о застрахованных</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredPersonList" type="InsuredPersonList_type" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Перечень застрахованных лиц</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredAdditionalID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID Дополнительной информации по застрахованному</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredAdditional" type="InsuredAdditional_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дополнительная информация по застрахованному </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RealtyTypeID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID Типа объекта/недвижимости</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RealtyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Тип объекта/недвижимости</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="Realty_Type">
+						<xs:maxLength value="5"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RealtyAfter1955" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Год постройки:
+0 – менее 1955
+1 – более 1955 
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RealtyHasWood" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Деревянные перекрытия:
+0 – отсутствуют
+1 – присутствуют
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RealtyAddressCopy" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Адрес объекта страхования с адресом регистрации:
+0 – не совпадает
+1 - совпадает
+</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Address" type="FullAddress_Type" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Адрес застрахованного объекта</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InsuredPersonInfo_Type">
+		<xs:annotation>
+			<xs:documentation>Информация о застрахованных</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="InsuredGroup" type="InsuredGroup_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Возрастная группа застрахованных</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredPersonQuantity" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Количество застрахованных в группе</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Application_Type">
+		<xs:annotation>
+			<xs:documentation>Тип запроса</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="BasicRQ_Type">
+				<xs:sequence>
+					<xs:element name="BankInfo" type="BankInfo_Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Информация об отделении и сотруднике</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="CustomerInfo" type="CustomerInfo_Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Информация о клиенте</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="InsuranceParameter" type="InsuranceParameter_Type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Данные по кредитной и страховой программам</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Mode">
+						<xs:annotation>
+							<xs:documentation>Режим обработки заявления</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="Mode_Type">
+								<xs:maxLength value="10"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="ETSMID">
+						<xs:annotation>
+							<xs:documentation>ID заявки в ETSM</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="36"/>
+								<xs:pattern value="[0-9a-fA-F\-]*"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="SID" fixed="UFS">
+						<xs:annotation>
+							<xs:documentation>ID системы источника формирования заявки</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="3"/>
+								<xs:pattern value="[0-9А-Яа-яЁёA-Za-z\\?=.*()/-_]*"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="InsuranceFromDate" type="Date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата начала страхования</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="InsuranceToDate" type="Date" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Дата окончания страхования</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ContractID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>ID страхового договора</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="32"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="PolicyNumber" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Номер полиса</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="10"/>
+								<xs:pattern value="[0-9]*"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="PolicySeries" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Серия полиса</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="String">
+								<xs:maxLength value="5"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Payment" type="Payment_type" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Платеж</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="OpCode" type="OpCode_Type" use="required">
+					<xs:annotation>
+						<xs:documentation>Код операции</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RiskList_Type">
+		<xs:annotation>
+			<xs:documentation>Перечень страховых рисков и сумм</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RiskID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID риска</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskItem" type="RiskItem_Type">
+				<xs:annotation>
+					<xs:documentation>Наименование риска</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskInsAdditional" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Признак дополнительного страхового риска (только для опциональных рисков ВЗР)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskPremium" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Страховая премия по риску в валюте</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskPremiumCurrencyID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID валюты риска</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskPremiumCurrency" type="Currency_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Валюта страховой премии</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskPremiumRu" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Страховая премия по риску в рублях</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskInsSumID" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>ID Страхового покрытия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskSum" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Страховое покрытие по риску (страховая сумма) в валюте</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskSumCurrency" type="Currency_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Валюта страхового покрытия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RiskSumRu" type="xs:double" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Страховое покрытие по риску (страховая сумма) в рублях</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InsuredPersonList_type">
+		<xs:annotation>
+			<xs:documentation>Перечень застрахованных лиц</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="InsuredFirstName" type="Name_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Застрахованный: Фамилия</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredLastName" type="Name_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Застрахованный: Имя </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="InsuredBirthday" type="Date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Застрахованный: Дата рождения</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Payment_type">
+		<xs:annotation>
+			<xs:documentation>Платеж</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="PaymentMethod" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Признак способа оплаты    1 – разовый
+0 – ежемесячный</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaymentID">
+				<xs:annotation>
+					<xs:documentation>ID платежа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="36"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PaymentSum" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>Сумма платежа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PaymentCur">
+				<xs:annotation>
+					<xs:documentation>Валюта платежа</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BasicRQ_Type">
+		<xs:annotation>
+			<xs:documentation>Тип используемый как формат сообщения - Запрос</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="RqUID">
+				<xs:annotation>
+					<xs:documentation>Уникальный идентификатор запроса</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="RqUID_Type">
+						<xs:pattern value="[0-9a-fA-F]{32}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RqTm" type="DateTime">
+				<xs:annotation>
+					<xs:documentation>Дата и время запроса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OperUID" type="UUID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Уникальный номер операции</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SPName" type="SPName_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор системы инициирующей запрос</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SystemID" type="SPName_Type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор системы назначения запроса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="OPER_ID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Номер операции (ЕКП)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="String">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TSMMessageId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Идентификатор сообщения TSM</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="UUID">
+						<xs:pattern value="[0-9a-fA-F]{32}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RES_UID" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Уникальный идентификатор клиентской сессии</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="UUID">
+						<xs:pattern value="[0-9a-fA-F\-]*"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

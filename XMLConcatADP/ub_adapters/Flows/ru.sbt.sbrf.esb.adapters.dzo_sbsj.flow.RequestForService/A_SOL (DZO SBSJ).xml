@@ -1,0 +1,60 @@
+<Adapter name="A_SOL (DZO SBSJ)">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>SOL</SCName>
+		<Operations>
+		<PutInsuranceApplicationRq>
+			<Service>SrvPutInsuranceApplication</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceApplicationRq>
+		<AnnulInsurancePolicyRq>
+			<Service>SrvAnnulInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</AnnulInsurancePolicyRq>
+		<CreateInsurancePolicyRq>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CreateInsurancePolicyRq>
+		<UpdateInsurancePolicyRq>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</UpdateInsurancePolicyRq>
+		<PutInsuranceSupplementaryAgreementRq>
+			<Service>SrvPutInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceSupplementaryAgreementRq>
+		<PutInsuranceFNOLRq>
+			<Service>SrvPutInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceFNOLRq>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvPutInsuranceApplication001">
+			<TargetQ>UB.PUTINSAPP.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.PUTINSSUPAGR.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvAnnulInsurancePolicy001">
+			<TargetQ>UB.ANNINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceFNOL001">
+			<TargetQ>UB.PUTINSFNOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy003">
+			<TargetQ>UB.CRTINSPOL.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy003">
+			<TargetQ>UB.UPDINSPOL.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

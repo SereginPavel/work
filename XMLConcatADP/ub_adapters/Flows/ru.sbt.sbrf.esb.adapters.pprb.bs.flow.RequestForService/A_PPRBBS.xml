@@ -1,0 +1,100 @@
+<Adapter name="A_PPRBBS">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>PPRB.BS</SCName>
+		<Operations>
+		<CheckCumulativeInsuranceRiskLimitsRq>
+			<Service>SrvCheckCumulativeInsuranceRiskLimits</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CheckCumulativeInsuranceRiskLimitsRq>
+		<PutInsuranceApplicationRq>
+			<Service>SrvPutInsuranceApplication</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceApplicationRq>
+		<PutInsuranceSupplementaryAgreementRq>
+			<Service>SrvPutInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceSupplementaryAgreementRq>
+		<AnnulInsurancePolicyRq>
+			<Service>SrvAnnulInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</AnnulInsurancePolicyRq>
+		<CalcInsuranceRefundAmountRq>
+			<Service>SrvCalcInsuranceRefundAmount</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</CalcInsuranceRefundAmountRq>
+		<PutInsuranceFNOLRq>
+			<Service>SrvPutInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceFNOLRq>
+		<GetInsuranceFNOLRq>
+			<Service>SrvGetInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceFNOLRq>
+		<CalcInsurancePremiumRq>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CalcInsurancePremiumRq>
+		<CalcInsurancePremiumRq>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>004</ServiceVersion>
+		</CalcInsurancePremiumRq>
+		<CreateInsurancePolicyRq>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CreateInsurancePolicyRq>
+		<UpdateInsurancePolicyRq>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</UpdateInsurancePolicyRq>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvCheckCumulativeInsuranceRiskLimits001">
+			<TargetQ>UB.CHECKCUMINSRSKLIM.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceApplication001">
+			<TargetQ>UB.PUTINSAPP.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.PUTINSSUPAGR.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvAnnulInsurancePolicy001">
+			<TargetQ>UB.ANNINSPOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsuranceRefundAmount001">
+			<TargetQ>UB.CALCINSREFAMT.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceFNOL001">
+			<TargetQ>UB.PUTINSFNOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceFNOL001">
+			<TargetQ>UB.GETINSFNOL.V001.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium003">
+			<TargetQ>UB.CALCINSPREM.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium004">
+			<TargetQ>UB.CALCINSPREM.V004.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy003">
+			<TargetQ>UB.CRTINSPOL.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy003">
+			<TargetQ>UB.UPDINSPOL.V003.REQUEST</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

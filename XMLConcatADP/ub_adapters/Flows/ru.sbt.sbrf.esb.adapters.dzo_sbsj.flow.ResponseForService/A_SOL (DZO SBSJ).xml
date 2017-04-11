@@ -1,0 +1,124 @@
+<Adapter name="A_SOL (DZO SBSJ)">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>ASBS</SCName>
+		<Operations>
+		<CreateInsurancePolicyRs>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</CreateInsurancePolicyRs>
+		<UpdateInsurancePolicyRs>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>002</ServiceVersion>
+		</UpdateInsurancePolicyRs>
+		<PutInsuranceApplicationRs>
+			<Service>SrvPutInsuranceApplication</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceApplicationRs>
+		<CreateInsurancePolicyRs>
+			<Service>SrvCreateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CreateInsurancePolicyRs>
+		<UpdateInsurancePolicyRs>
+			<Service>SrvUpdateInsurancePolicy</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</UpdateInsurancePolicyRs>
+		<CalcInsurancePremiumRs>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>003</ServiceVersion>
+		</CalcInsurancePremiumRs>
+		<CalcInsurancePremiumRs>
+			<Service>SrvCalcInsurancePremium</Service>
+			<ServiceVersion>004</ServiceVersion>
+		</CalcInsurancePremiumRs>
+		<PutInsuranceFNOLRs>
+			<Service>SrvPutInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceFNOLRs>
+		<GetInsuranceFNOLRs>
+			<Service>SrvGetInsuranceFNOL</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</GetInsuranceFNOLRs>
+		<PutInsuranceSupplementaryAgreementRs>
+			<Service>SrvPutInsuranceSupplementaryAgreement</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</PutInsuranceSupplementaryAgreementRs>
+		<AnnulInsurancePolicyRs>
+			<Service>SrvAnnulInsurancePolicy</Service>
+			<ServiceVersion>001</ServiceVersion>
+		</AnnulInsurancePolicyRs>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvCalcInsurancePremium001">
+			<TargetQ>UB.CALCINSPREM.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy001">
+			<TargetQ>UB.CRTINSPOL.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy001">
+			<TargetQ>UB.UPDINSPOL.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium002">
+			<TargetQ>UB.CALCINSPREM.V002.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium003">
+			<TargetQ>UB.CALCINSPREM.V003.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsurancePremium004">
+			<TargetQ>UB.CALCINSPREM.V004.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy002">
+			<TargetQ>UB.CRTINSPOL.V002.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCreateInsurancePolicy003">
+			<TargetQ>UB.CRTINSPOL.V003.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy002">
+			<TargetQ>UB.UPDINSPOL.V002.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy003">
+			<TargetQ>UB.UPDINSPOL.V003.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCheckCumulativeInsuranceRiskLimits001">
+			<TargetQ>UB.CHECKCUMINSRSKLIM.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceApplication001">
+			<TargetQ>UB.PUTINSAPP.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvAnnulInsurancePolicy001">
+			<TargetQ>UB.ANNINSPOL.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvCalcInsuranceRefundAmount001">
+			<TargetQ>UB.CALCINSREFAMT.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceFNOL001">
+			<TargetQ>UB.PUTINSFNOL.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvGetInsuranceFNOL001">
+			<TargetQ>UB.GETINSFNOL.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvPutInsuranceSupplementaryAgreement001">
+			<TargetQ>UB.PUTINSSUPAGR.V001.DZO.SBSJ.SOL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>

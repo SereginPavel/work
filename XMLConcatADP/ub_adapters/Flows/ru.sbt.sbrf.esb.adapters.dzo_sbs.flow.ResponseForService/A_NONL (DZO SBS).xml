@@ -1,0 +1,23 @@
+<Adapter name="A_NONL (DZO SBS)">
+	<AdapterParams>
+		<LoggingLevel>2</LoggingLevel>
+		<TransactionLoging>1</TransactionLoging>
+		<SLAMonitor>0</SLAMonitor>
+		<SCName>ASBS</SCName>
+		<Operations>
+		<Response>
+			<ServiceVersion>002</ServiceVersion>
+		</Response>
+		</Operations>
+	</AdapterParams>
+	<ServiceRoutes>
+		<ServiceRoute key="SrvCreateInsurancePolicy002">
+			<TargetQ>UB.CRTINSPOL.V002.DZO.SBS.NONL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+		<ServiceRoute key="SrvUpdateInsurancePolicy002">
+			<TargetQ>UB.UPDINSPOL.V002.DZO.SBS.NONL.RESPONSE</TargetQ>
+			<TargetQM/>
+		</ServiceRoute>
+	</ServiceRoutes>
+</Adapter>
