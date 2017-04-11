@@ -2,6 +2,7 @@ import javax.xml.stream.*;
 import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -12,7 +13,6 @@ public class Structure {
 
     //region параметры вывода и xml структуры
     private final Double INCRVER = 0.01;
-    private Double tempVersion = 0.0;
     private XMLInputFactory xmlInFactory;
     private File dir;
     private File currentFile;
@@ -21,7 +21,8 @@ public class Structure {
     private XMLOutputFactory xmlOutFactory;
     private XMLEventWriter xmlEventWriter;
     private XMLEventFactory xmlEventFactory;
-    Double versionBase;
+    private File dir1; //темповая директория с кешом
+    private String tempFileCache; //путь к темповому файлу с кешом
     //endregion
 
     public Structure() throws Throwable{
@@ -30,7 +31,6 @@ public class Structure {
         this.currentFile = new File(new File("").getAbsolutePath());
         this.xmlOutFactory = XMLOutputFactory.newFactory();
         this.xmlEventFactory = XMLEventFactory.newFactory();
-        this.versionBase = 0.0;
     }
 
     /**
@@ -43,10 +43,12 @@ public class Structure {
         if (!checkFileCache) return;
 
         //версия темпового файла с кешом
-        tempVersion = versionBase + INCRVER;
-        String tempNameCache = "CacheService.xml";
+        tempFileCache = currentFile + "//tmp//CacheService.xml";
+        dir1 = new File(currentFile + "//tmp");
+        dir1.mkdir();
+        new File(dir1, "CacheService.xml");
 
-        this.outputWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempNameCache), "UTF-8"));
+        this.outputWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFileCache), "UTF-8"));
         this.xmlEventWriter = xmlOutFactory.createXMLEventWriter(outputWriter);
         //массив файлов потоков
         File[] flowFiles = dir.listFiles();
@@ -75,7 +77,7 @@ public class Structure {
         System.out.println();
 
         //проверка хэшей файлов
-        checkCacheFiles(baseFileCache.getName(), tempNameCache);
+        checkCacheFiles(baseFileCache.getName(), tempFileCache);
 
         System.out.println("SUCCESSFULLY!!!");
     }
@@ -138,8 +140,8 @@ public class Structure {
                 baseFileCache = baseFile;
                 nameFileCache = baseFile.getName();
                 System.out.println(nameFileCache);
-                String[] partNameCacheValidate = nameFileCache.split("_v")[1].split(".xml");
-                versionBase = Double.parseDouble(partNameCacheValidate[0]);
+//                String[] partNameCacheValidate = nameFileCache.split("_v")[1].split(".xml");
+//                versionBase = Double.parseDouble(partNameCacheValidate[0]);
                 return true;
             }
         }
@@ -186,10 +188,14 @@ public class Structure {
         String hashTemp = getHashFile(tempFileName);
         if (hashBase.equals(hashTemp)){
             System.out.println("Схемы не менялись.");
-            new File(tempFileName).delete();
+            baseFileCache.delete();
+            Files.move(new File(tempFileCache).toPath(), baseFileCache.toPath());
+            dir1.delete();
         }else{
-            System.out.println("Схемы менялись. Новая версия кеша валидации: " + tempVersion);
-            new File(baseFileName).delete();
+            System.out.println("Схемы менялись.");
+            baseFileCache.delete();
+            Files.move(new File(tempFileCache).toPath(), baseFileCache.toPath());
+            dir1.delete();
         }
         return false;
     }

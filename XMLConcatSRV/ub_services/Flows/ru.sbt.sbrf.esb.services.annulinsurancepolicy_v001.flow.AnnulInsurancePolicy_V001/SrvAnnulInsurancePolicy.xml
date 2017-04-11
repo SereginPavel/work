@@ -14,7 +14,7 @@
 			<ReplyToQ>UB.PPRB.SRVANNULINSURANCEPOLICY.OUT</ReplyToQ>
 			<ReplyToQM/>
 			<SLAParams>
-				<MaxTPS>0</MaxTPS>
+ 				<MaxTPS>0</MaxTPS>
 				<MaxSize>0</MaxSize>
 				<AvgTPD>0</AvgTPD>
 				<AvgSize>0</AvgSize>
