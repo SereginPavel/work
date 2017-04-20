@@ -3,6 +3,8 @@ import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -184,14 +186,45 @@ public class Structure {
     Boolean checkCacheFiles(String baseFileName, String tempFileName) throws IOException, NoSuchAlgorithmException {
         String hashBase = getHashFile(baseFileName);
         String hashTemp = getHashFile(tempFileName);
+        Path pathConfig = Paths.get("..\\..\\Config");
+        Path pathESBConfiguration = Paths.get("..\\..\\ESBConfiguration");
+        String path="";
+
+        //проверка существования папки с конфигом
+        if (Files.exists(pathConfig)){
+            path = "..\\..\\Config\\env\\cache\\ADP";
+        }else if (Files.exists(pathESBConfiguration)){
+            path = "..\\..\\ESBConfiguration\\Installer\\env\\cache\\ADP";
+        }else return false;
+
         if (hashBase.equals(hashTemp)){
             System.out.println("Схемы не менялись.");
             new File(tempFileCache).delete();
         }else{
             System.out.println("Схемы менялись");
             baseFileCache.delete();
-            new File(tempFileCache).renameTo(baseFileCache);
+            File cacheFile =  new File(tempFileCache);
+            cacheFile.renameTo(baseFileCache);
+            new File(path + "\\CacheAdapter.xml").delete();
+            copyFileUsingStream(baseFileCache,  new File(path + "\\CacheAdapter.xml"));
         }
         return false;
+    }
+
+    private void copyFileUsingStream(File source, File dest) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            is.close();
+            os.close();
+        }
     }
 }
